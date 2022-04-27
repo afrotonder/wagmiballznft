@@ -1,0 +1,7 @@
+{
+  "name": "wagmiballznft",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
