@@ -1,3 +1,33 @@
+@use '../app.component.scss';
+
+.wagmiTitle {
+  text-align: center;
+  background-color: transparent !important;
+  --background: none !important;
+}
+
+.contract {
+  font-size: 47px;
+  font-weight: 400;
+  color: black;
+}
+
+.fillOutline {
+  --background: none;
+  background-color: transparent;
+    display: flex;
+    justify-content: center;
+margin: 1% auto 0 auto;
+}
+
+.socialBanner {
+  --background: none;
+  background-color: transparent;
+}
+
+.banner {
+  width: 600px;
+}
 #container {
   text-align: center;
 
@@ -12,6 +42,21 @@
   font-size: 20px;
   line-height: 26px;
 }
+.socialAnchor {
+  font-size: 20px;
+  color: black;
+}
+
+.linkIcon {
+  width: 40px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  pointer-events: none;
+  // margin-left: 3%;
+  // margin-right: auto;
+  border: 2px solid var(--cyberPava-orange);
+  border-radius: 50%;
+}
 
 #container p {
   font-size: 16px;
@@ -24,4 +69,17 @@
 
 #container a {
   text-decoration: none;
+}
+
+
+
+.navBar {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 800px) {
+
+
+
 }

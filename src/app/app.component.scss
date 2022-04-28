@@ -1,0 +1,52 @@
+ion-toolbar {
+  --background: none !important;
+  background-color: transparent;
+
+}
+
+ion-content {
+  --background: none !important;
+
+  background: linear-gradient(180deg, #696969, #e3e3e3, #696969);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 48s ease infinite;
+  -moz-animation: AnimationName 48s ease infinite;
+  animation: AnimationName 48s ease infinite;
+}
+
+ .wagmiItem {
+  text-align: center;
+  margin: 10% auto 1% auto;
+  width: 80%;
+  line-height: 25px;
+  --background: none !important;
+  background-color: transparent;
+
+}
+
+.wagmiListItem {
+  text-align: justify;
+  margin: 2% auto 0 5%;
+  width: 80%;
+  line-height: 25px;
+  --background: none !important;
+  background-color: transparent;
+
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:53% 0%}
+  50%{background-position:48% 100%}
+  100%{background-position:53% 0%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:53% 0%}
+  50%{background-position:48% 100%}
+  100%{background-position:53% 0%}
+}
+@keyframes AnimationName {
+  0%{background-position:53% 0%}
+  50%{background-position:48% 100%}
+  100%{background-position:53% 0%}
+}

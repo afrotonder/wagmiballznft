@@ -1,20 +1,80 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar style="text-align: center; --background:none;">
+
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
+
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-list class="navBar fillOutline" lines="none">
+    <ion-item class="socialBanner" *ngFor="let item of menuItems" lines="none">
+      <a
+        class="socialAnchor"
+        href="{{item.src}}"
+        target="_blank"
+        title="{{item.title}}"
+      >
+        <img class="linkIcon" src="{{item.icon}}" alt="{{item.alt}}" />
+      </a>
+    </ion-item>
+    <ion-item class="socialBanner" lines="none">
+      <ion-icon class="contract" name="aperture-outline"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+
+
+  <div class="fillOutline" lines="none">
+    <!-- Paddlez NFT -->
+    <img class="banner" src="../../assets/banner.png" alt="">
+  </div>
+
+  <ion-item  class="wagmiItem" lines="none" style="font-size: 10px;">
+
+
+    <img style="width: 300px; height: 300px;margin: auto;" class="promoGif" src="../assets/WAGMIBALLZ_PROMO.gif" alt="">
+
+    <section style="width: 50%; margin: auto;">
+      <p style="
+      text-align: justify; line-height: 22px;">
+        WAGMIBALLZ NFT is a collection of 919 programatically generated gifs using GIMP, python, & Noelle Leigh's Aniamted Pixel Gradient generator.
+
+      </p>
+
+
+      <p style="text-align: left;">Utilities</p>
+      <ul style="text-align: left;
+      font-size: 10px;
+      ">
+        <li>
+          Sprite for Paddlez Web3 Game
+        </li>
+        <li>
+          Allow List Token for next Afrotonder collection
+        </li>
+        <li>
+          CC0 art free for you to use
+        </li>
+      </ul>
+    </section>
+
+  </ion-item>
+
+
+  <div style="text-align: center">
+    <ion-spinner
+      style="margin-top: 85px;"
+      name="crescent"
+      *ngIf="showSpinner"
+    ></ion-spinner>
+    <iframe style="width:100%; height:auto;" src="../../assets/index.html" frameborder="0"></iframe>
+
+  </div>
+
+  <div style="text-align: center;position: fixed; bottom: 0;
+  width: 100%;">
+    Afrotonder ⚡ {{year}}
+
   </div>
 </ion-content>
