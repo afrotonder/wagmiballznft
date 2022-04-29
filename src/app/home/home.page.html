@@ -4,9 +4,7 @@
   </ion-toolbar>
 </ion-header> -->
 
-
 <ion-content [fullscreen]="true">
-
   <ion-list class="navBar fillOutline" lines="none">
     <ion-item class="socialBanner" *ngFor="let item of menuItems" lines="none">
       <a
@@ -23,48 +21,131 @@
     </ion-item>
   </ion-list>
 
-
-
   <div class="fillOutline" lines="none">
     <!-- Paddlez NFT -->
-    <img class="banner" src="../../assets/banner.png" alt="">
+    <img class="banner" src="../../assets/banner.png" alt="" />
   </div>
 
-  <div  class="wagmiItem" lines="none" style="font-size: 10px;">
-
+  <div class="wagmiItem" lines="none" style="font-size: 10px">
     <!-- <div> -->
-      <img style="width: 300px; height: 300px;margin: auto;" class="promoGif" src="../assets/WAGMIBALLZ_PROMO.gif" alt="">
+    <img
+      style="width: 300px; height: 300px; margin: auto"
+      class="promoGif"
+      src="../assets/WAGMIBALLZ_PROMO.gif"
+      alt=""
+    />
 
     <!-- </div> -->
 
-    <section class="infoSection" >
-      <p style="
-      text-align: justify; line-height: 22px;">
-        WAGMIBALLZ NFT is a collection of 919 programatically generated gifs using GIMP, python, & Noelle Leigh's Aniamted Pixel Gradient generator.
-
+    <section class="infoSection">
+      <p style="text-align: justify; line-height: 22px">
+        WAGMIBALLZ NFT is a collection of 919 programatically generated gifs
+        using GIMP, python, & Noelle Leigh's Aniamted Pixel Gradient generator.
       </p>
 
-
-      <p style="text-align: left;">Utilities</p>
-      <ul style="text-align: left;
-      font-size: 10px;
-      ">
-        <li>
-          Sprite for Paddlez Web3 Game
-        </li>
-        <li>
-          Allow List Token for next Afrotonder collection
-        </li>
-        <li>
-          CC0 art free for you to use
-        </li>
+      <p style="text-align: left">Utilities</p>
+      <ul style="text-align: left; font-size: 10px">
+        <li>Sprite for Paddlez Web3 Game</li>
+        <li>Allow List Token for next Afrotonder collection</li>
+        <li>CC0 art free for you to use</li>
       </ul>
     </section>
-
   </div>
 
+  <div class="box">
+    <div style="display: flex; justify-content: space-evenly">
+      <section style="width: 100%; margin: 0 auto 20px auto">
+        <div style="text-align: right">
+          <section style="display: flex; justify-content: center">
+            <p>Price:</p>
+            <!-- <p style="width: 100px">{{eth}} ETH</p> -->
+            <p style="width: 100px">0 ETH</p>
 
-  <div style="text-align: center">
+          </section>
+          <section style="display: flex; justify-content: center">
+            <p>Mint Limit:</p>
+            <p style="width: 25px">{{limit}}</p>
+          </section>
+        </div>
+        <ion-button
+          *ngIf="userTokenMintCount<1"
+          class="btn"
+          (click)="switchToMint()"
+        >
+          Mint
+        </ion-button>
+        <!-- <a class='btn' href="mint.html#address={{address}}&key={{key}}">
+            <button class="startMint">
+              Mint
+            </button>
+
+    </a> -->
+      </section>
+    </div>
+
+    <ion-item lines="none" class="minter clearBG" style="width: 100%" *ngIf="minting">
+      <!-- <div > -->
+      <!-- <select id="count" [(ngModel)]="userTokenMintCount">
+          <option value="" selected disabled hidden>Select mint count</option>
+          <option *ngFor="let count of mintingItems" value="{{count}}">
+            {{count}}
+          </option>
+        </select> -->
+
+      <ion-select
+      class="clearBG"
+        id="count"
+        [(ngModel)]="userTokenMintCount"
+        submitText="Select"
+        cancelText="Cancelar"
+        placeholder="Select Amount"
+      >
+        <ion-select-option value="" selected disabled hidden
+          >Mint count</ion-select-option
+        >
+        <ion-select-option *ngFor="let count of mintingItems" value="{{count}}">
+          {{count}}
+        </ion-select-option>
+      </ion-select>
+
+      <!-- </div> -->
+    </ion-item>
+
+    <button
+      *ngIf="userTokenMintCount>0"
+      (click)="beginMint()"
+      style="margin: 10px"
+      id="mint"
+    >
+      Mint {{userTokenMintCount}} Tokens
+    </button>
+  </div>
+
+  <ion-item class="console" *ngIf="tokens.length>1">
+    <table class="table">
+      <tr>
+        <th><img src="opensea.png" /></th>
+        <th><img src="rarible.png" /></th>
+      </tr>
+      <!-- {{#each items}} -->
+      <tr *ngFor="let token of tokens">
+        <td>
+          <a class="token" target="_blank" href="{{token.opensea}}"
+            >token #{{token.tokenId}}</a
+          >
+        </td>
+        <td>
+          <a class="token" target="_blank" href="{{token.rarible}}"
+            >token #{{token.tokenId}}</a
+          >
+        </td>
+      </tr>
+      <!-- {{/each}} -->
+    </table>
+  </ion-item>
+
+  <!-- WORKING IFRAME WITH WEB3 STUFF -->
+  <!-- <div style="text-align: center">
     <ion-spinner
       style="margin-top: 85px;"
       name="crescent"
@@ -72,12 +153,12 @@
     ></ion-spinner>
     <iframe scrolling="no" style="width:100%; height:185px; margin-bottom: 25px;" src="../../assets/index.html" frameborder="0"></iframe>
 
-  </div>
+  </div> -->
 
-
-  <ion-footer style="text-align: center; bottom: 0;
-  width: 100%;" class="ion-no-border">
+  <ion-footer
+    style="text-align: center; bottom: 0; width: 100%"
+    class="ion-no-border"
+  >
     Afrotonder ⚡ {{year}}
   </ion-footer>
 </ion-content>
-

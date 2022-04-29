@@ -1,7 +1,6 @@
 body {
   font-family: PressStart2P-Regular;
 
-
   /* font-family: Sans-serif; */
   font-size: 12px;
   display: flex;
@@ -19,13 +18,12 @@ body {
   -moz-animation: AnimationName 37s ease infinite;
   animation: AnimationName 37s ease infinite; */
 
-background-color: transparent;
+  background-color: transparent;
 
   @font-face {
     font-family: PressStart2P-Regular;
-    src: url('./PressStart2P-Regular.ttf');
-  }  /* src: url('./PressStart2P-Regular.ttf'); */
-
+    src: url("./PressStart2P-Regular.ttf");
+  } /* src: url('./PressStart2P-Regular.ttf'); */
 }
 
 .startMint {
@@ -35,12 +33,12 @@ background-color: transparent;
 
 @font-face {
   font-family: PressStart2P-Regular;
-  src: url('./PressStart2P-Regular.ttf');
-}  /* src: url('./PressStart2P-Regular.ttf'); */
+  src: url("./PressStart2P-Regular.ttf");
+} /* src: url('./PressStart2P-Regular.ttf'); */
 
 #mint {
   margin: 10px;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
   /* padding: 5px 10px; */
   text-align: center;
   width: 35%;
@@ -49,17 +47,15 @@ background-color: transparent;
 }
 
 :root {
-
   @font-face {
     font-family: PressStart2P-Regular;
-    src: url('./PressStart2P-Regular.ttf');
-  }  /* src: url('./PressStart2P-Regular.ttf'); */
-
-  }
+    src: url("./PressStart2P-Regular.ttf");
+  } /* src: url('./PressStart2P-Regular.ttf'); */
+}
 .box {
   /* max-width: 60%; */
   text-align: center;
-  width: 60%;
+  /* width: 60%; */
 }
 .box2 {
   /* max-width: 60%; */
@@ -71,12 +67,12 @@ background-color: transparent;
   width: 300px;
 }
 
-.box > *, .minter > *{
-
+.box > *,
+.minter > * {
   /* display: flex; */
   /* width: 100% !important; */
   /* margin-bottom: 10px; */
-  margin: 20px auto 2% auto ;
+  margin: 20px auto 2% auto;
 }
 .nice-select {
   margin-bottom: 10px;
@@ -88,7 +84,7 @@ background-color: transparent;
   width: 100%;
 }
 button {
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 10px;
   border: none;
@@ -130,32 +126,35 @@ h1 a {
 .invites {
 }
 table {
-  width: 100%;
+  width: 60%;
   table-layout: fixed;
   overflow-wrap: break-word;
   display: table !important;
   margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
-td, th {
+td,
+th {
   padding: 5px;
   font-size: 14px;
   text-align: center;
 }
 th {
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 tr {
   width: 100%;
   border-bottom: 1px solid white;
 }
 .btn {
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
   /* padding: 5px 10px; */
   text-align: center;
-  width: 35%;
+  width: 160px;
   height: 45px;
-  margin: auto;
+  margin: 10px auto 10px auto;
 }
 .hidden {
   display: none !important;
@@ -164,7 +163,7 @@ tr {
   padding: 20px;
   box-sizing: border-box;
   font-size: 15px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   margin-top: 20px;
   border-radius: 50px;
 }
@@ -175,24 +174,42 @@ tr a {
   color: white;
 }
 .token {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   padding: 5px;
   text-align: center;
   font-size: 12px;
 }
 
 @-webkit-keyframes AnimationName {
-  0%{background-position:53% 0%}
-  50%{background-position:48% 100%}
-  100%{background-position:53% 0%}
+  0% {
+    background-position: 53% 0%;
+  }
+  50% {
+    background-position: 48% 100%;
+  }
+  100% {
+    background-position: 53% 0%;
+  }
 }
 @-moz-keyframes AnimationName {
-  0%{background-position:53% 0%}
-  50%{background-position:48% 100%}
-  100%{background-position:53% 0%}
+  0% {
+    background-position: 53% 0%;
+  }
+  50% {
+    background-position: 48% 100%;
+  }
+  100% {
+    background-position: 53% 0%;
+  }
 }
 @keyframes AnimationName {
-  0%{background-position:53% 0%}
-  50%{background-position:48% 100%}
-  100%{background-position:53% 0%}
+  0% {
+    background-position: 53% 0%;
+  }
+  50% {
+    background-position: 48% 100%;
+  }
+  100% {
+    background-position: 53% 0%;
+  }
 }

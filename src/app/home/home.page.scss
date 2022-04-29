@@ -1,4 +1,5 @@
 @use '../app.component.scss';
+@use '../../assets/style.css';
 
 .wagmiTitle {
   text-align: center;
@@ -21,6 +22,11 @@ margin: 1% auto 0 auto;
 }
 
 .socialBanner {
+  --background: none;
+  background-color: transparent;
+}
+
+.clearBG {
   --background: none;
   background-color: transparent;
 }
