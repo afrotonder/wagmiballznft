@@ -87,7 +87,7 @@ margin: 1% auto 0 auto;
 
 .wagmiItem {
   text-align: center;
-  margin: 10% auto 1% auto;
+  margin: 45px auto 1% auto;
   width: auto; //50%; //80%;
   line-height: 25px;
   --background: none !important;
@@ -103,6 +103,15 @@ flex-direction: row;
    margin: 0 auto 0 auto;
 }
 
+#refresher {
+  visibility: hidden;
+  display: none;
+}
+
+#footer {
+  position: absolute;
+}
+
 @media only screen and (min-width: 1300px) {
 .wagmiItem {
   width: 888px;
@@ -111,6 +120,13 @@ flex-direction: row;
 
 @media only screen and (max-width: 700px) {
 
+  #footer {
+    position: inherit;
+  }
+
+  #refresher {
+    visibility: visible;
+  }
 
 .infoSection {
   width: 90%;

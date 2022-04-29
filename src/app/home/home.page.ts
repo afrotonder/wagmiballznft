@@ -73,6 +73,19 @@ export class HomePage {
     // this.testMoralis()
   }
 
+  doRefresh(event) {
+
+    // this.searchValue = "" ;
+
+    // this.getPunks()
+    window.location.reload();
+
+
+
+    event.target.complete()
+
+  }
+
   async testMoralis() {
       const serverUrl = firebaseConfig.svr;
 
@@ -91,6 +104,10 @@ export class HomePage {
 
   async runWeb3Stuff() {
 
+
+    try {
+
+
     const F0 = require('f0js')
 
     let f0 = new F0()
@@ -107,7 +124,8 @@ export class HomePage {
     let net = await web3.eth.getChainId()
 
     await window.ethereum.send('eth_requestAccounts');
-    try {
+
+
       await f0.init({
         web3: web3,
         contract: config.contract,
@@ -139,7 +157,14 @@ export class HomePage {
       // })
 
     } catch (e) {
-      document.querySelector(".box").innerHTML = `<h1>${e.message.toLowerCase()}</h1>`
+      // @ts-ignore
+      document.getElementsByClassName('btn')[0].style.display = 'none'
+      console.log(e.message);
+
+      if (e.message.includes('Provider not set or invalid')) {
+        this.showToast('Please log into your wallet. 🦊')
+      }
+      // document.querySelector(".box").innerHTML = `<h1>${e.message.toLowerCase()}</h1>`
     }
     // })
   }
