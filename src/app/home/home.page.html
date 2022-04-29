@@ -53,7 +53,7 @@
   </div>
 
   <div class="box">
-    <div style="display: flex; justify-content: space-evenly">
+    <div style="display: flex; justify-content: space-evenly; flex-direction: column;">
       <section style="width: 100%; margin: 0 auto 20px auto">
         <div style="text-align: right">
           <section style="display: flex; justify-content: center">
@@ -68,7 +68,7 @@
           </section>
         </div>
         <ion-button
-          *ngIf="userTokenMintCount<1"
+          *ngIf="!minting"
           class="btn"
           (click)="switchToMint()"
         >
@@ -81,35 +81,36 @@
 
     </a> -->
       </section>
+      <ion-item lines="none" class="minter clearBG" style="width: 100%" *ngIf="minting">
+        <!-- <div > -->
+        <!-- <select id="count" [(ngModel)]="userTokenMintCount">
+            <option value="" selected disabled hidden>Select mint count</option>
+            <option *ngFor="let count of mintingItems" value="{{count}}">
+              {{count}}
+            </option>
+          </select> -->
+
+        <ion-select
+        class="clearBG"
+          id="count"
+          [(ngModel)]="userTokenMintCount"
+          submitText="Select"
+          cancelText="Cancelar"
+          placeholder="Select Amount"
+        >
+          <ion-select-option value="" selected disabled hidden
+            >Mint count</ion-select-option
+          >
+          <ion-select-option *ngFor="let count of mintingItems" value="{{count}}">
+            {{count}}
+          </ion-select-option>
+        </ion-select>
+
+        <!-- </div> -->
+      </ion-item>
     </div>
 
-    <ion-item lines="none" class="minter clearBG" style="width: 100%" *ngIf="minting">
-      <!-- <div > -->
-      <!-- <select id="count" [(ngModel)]="userTokenMintCount">
-          <option value="" selected disabled hidden>Select mint count</option>
-          <option *ngFor="let count of mintingItems" value="{{count}}">
-            {{count}}
-          </option>
-        </select> -->
 
-      <ion-select
-      class="clearBG"
-        id="count"
-        [(ngModel)]="userTokenMintCount"
-        submitText="Select"
-        cancelText="Cancelar"
-        placeholder="Select Amount"
-      >
-        <ion-select-option value="" selected disabled hidden
-          >Mint count</ion-select-option
-        >
-        <ion-select-option *ngFor="let count of mintingItems" value="{{count}}">
-          {{count}}
-        </ion-select-option>
-      </ion-select>
-
-      <!-- </div> -->
-    </ion-item>
 
     <button
       *ngIf="userTokenMintCount>0"

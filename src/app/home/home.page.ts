@@ -202,6 +202,7 @@ export class HomePage {
       //
     } catch (e) {
       console.log('ERR, NOT INVITED TO MINT ', e);
+      this.showToast('Looks like youre not invited to this mint! 😭')
       // document.querySelector(".box2").innerHTML = `<h1>${e.message.toLowerCase()}</h1>`
     }
   }
@@ -234,7 +235,7 @@ export class HomePage {
         console.log( error.message);
         if (error.message.includes('execution reverted: 10')) {
 
-          this.showToast('You have already reached the max mint limit. (:')
+          this.showToast('You have already reached the max mint limit. 🎯')
         }
     }
 
