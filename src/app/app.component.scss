@@ -15,26 +15,17 @@ ion-content {
   // animation: AnimationName 48s ease infinite;
 
   // .css-selector {
-    background: linear-gradient(178deg, #ffffff, #7ec1aa);
-    background-size: 400% 400%;
+    // background: linear-gradient(178deg, #ffffff, #7ec1aa);
+    // background-size: 400% 400%;
 
-    // -webkit-animation: AnimationName 30s ease infinite;
-    // -moz-animation: AnimationName 30s ease infinite;
-    // animation: AnimationName 30s ease infinite;
-// }
+    // .css-selector {
+      background: linear-gradient(180deg, #f0f0f0, #949494);
+      background-size: 600% 600%;
 
-  // background: #abbaab; /* fallback for old browsers */
-  // background-repeat: no-repeat;
-  // background: -webkit-linear-gradient(
-  //   to right,
-  //   #ffffff,
-  //   #abbaab
-  // ); /* Chrome 10-25, Safari 5.1-6 */
-  // background: linear-gradient(
-  //   to right,
-  //   #ffffff,
-  //   #abbaab
-  // );
+      -webkit-animation: AnimationName 30s ease infinite;
+      -moz-animation: AnimationName 30s ease infinite;
+      animation: AnimationName 30s ease infinite;
+  // }
 
 }
 
@@ -50,17 +41,17 @@ ion-content {
 }
 
 @-webkit-keyframes AnimationName {
-  0%{background-position:53% 0%}
-  50%{background-position:48% 100%}
-  100%{background-position:53% 0%}
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%}
 }
 @-moz-keyframes AnimationName {
-  0%{background-position:53% 0%}
-  50%{background-position:48% 100%}
-  100%{background-position:53% 0%}
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%}
 }
 @keyframes AnimationName {
-  0%{background-position:53% 0%}
-  50%{background-position:48% 100%}
-  100%{background-position:53% 0%}
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%}
 }

@@ -20,11 +20,11 @@
         <ion-icon class="contract" name="aperture-outline"></ion-icon>
       </ion-item>
     </ion-list>
-    <ion-buttons slot="end">
-      <ion-button (click)="connectWallet()" shape="round" fill="outline" style="font-size: 11px; color: black;">
+    <!-- <ion-buttons slot="end">
+      <ion-button (click)="connectWallet()" shape="round" fill="outline" style="font-size: 11px; color: black;    margin-right: 20px; margin-top: 10px;">
         {{connectButtonLabel}}
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 
 
@@ -76,13 +76,16 @@
             <p style="width: 100px">0 ETH</p>
 
           </section>
-          <section style="display: flex; justify-content: center">
+          <section *ngIf="connected" style="display: flex; justify-content: center">
             <p>Mint Limit:</p>
             <p style="width: 25px">{{limit}}</p>
           </section>
         </div>
+          <ion-button (click)="connectWallet()" *ngIf="!connected" shape="round" fill="outline" style="font-size: 11px; color: black;    margin-right: 20px; margin-top: 10px;">
+            {{connectButtonLabel}}
+          </ion-button>
         <ion-button
-          *ngIf="!minting"
+          *ngIf="!minting&&connected"
           class="btn"
           (click)="switchToMint()"
         >

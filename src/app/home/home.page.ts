@@ -32,10 +32,13 @@ export class HomePage {
   direction: string[] | undefined;
   minting: Boolean;
   connectButtonLabel: string ;
+  connected: boolean;
   constructor(private web3: Web3Service,
     private toastCtrl: ToastController,
 
     ) {
+
+      this.connected = false ;
     this.tokens = []
     this.minting = false
     this.showSpinner = true;
@@ -69,6 +72,7 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
+
     this.toggleSpinner()
 
 
@@ -167,7 +171,7 @@ export class HomePage {
       this.address = this.items[0].address
       this.key = this.items[0].key
       this.limit = this.items[0].limit
-
+      this.connected = true
       this.connectButtonLabel = this.items[0].address.substr(0, 16) + '...'
 
 
@@ -175,6 +179,7 @@ export class HomePage {
 
     } catch (e) {
 
+      this.connected = false
       this.connectButtonLabel = "Connect Wallet"
 
       // @ts-ignore
