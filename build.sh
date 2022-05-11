@@ -108,7 +108,7 @@ then
     echo ""
     echo "${green}BUILDS PROJECT FOR PROD-Android, SETS APP ICONS, SYNCS WITH ANDROID & JETIFIES"
     echo ""
-    ng build --configuration production && cordova-res android --skip-config --copy && npx cap sync android && npx jetify
+    ng build --configuration production
     echo ""
     echo "DONE!🔥"
     echo ""

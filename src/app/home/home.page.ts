@@ -3,6 +3,8 @@ import Web3 from 'web3';
 import Moralis from "moralis/dist/moralis.min.js";
 import { firebaseConfig } from "../../../environment.prod";
 import {  ToastController} from '@ionic/angular';
+// import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+// import ethers from 'ethers';
 
 import { Web3Service } from '../web3.service';
 @Component({
@@ -29,7 +31,7 @@ export class HomePage {
   mintingItems: Array<any>;
   direction: string[] | undefined;
   minting: Boolean;
-
+  connectButtonLabel: string ;
   constructor(private web3: Web3Service,
     private toastCtrl: ToastController,
 
@@ -38,6 +40,7 @@ export class HomePage {
     this.minting = false
     this.showSpinner = true;
     this.userTokenMintCount = 0
+    this.connectButtonLabel = "Connect Wallet"
 
     this.year = new Date().getFullYear().toString()
     this.menuItems = [
@@ -68,9 +71,13 @@ export class HomePage {
   ionViewDidEnter() {
     this.toggleSpinner()
 
-    this.runWeb3Stuff()
 
     // this.testMoralis()
+  }
+
+  connectWallet() {
+    this.runWeb3Stuff()
+
   }
 
   doRefresh(event) {
@@ -106,6 +113,13 @@ export class HomePage {
 
 
     try {
+
+      this.connectButtonLabel = "Connecting..."
+
+
+      // const provider = ethers.Wallet.createRandom();
+      // const sdk = new ThirdwebSDK(provider);
+      // const contract = sdk.getNFTDrop("0x95fF042dC0875E9b93a2D17B4D8C882eEfb3Da16");
 
 
     const F0 = require('f0js')
@@ -154,15 +168,24 @@ export class HomePage {
       this.key = this.items[0].key
       this.limit = this.items[0].limit
 
+      this.connectButtonLabel = this.items[0].address.substr(0, 16) + '...'
+
+
       // })
 
     } catch (e) {
+
+      this.connectButtonLabel = "Connect Wallet"
+
       // @ts-ignore
       document.getElementsByClassName('btn')[0].style.display = 'none'
-      console.log(e.message);
+      console.log('Err: ',e.message);
 
       if (e.message.includes('Provider not set or invalid')) {
         this.showToast('Please log into your wallet. 🦊')
+      }
+      if (e.message.includes('Please sign into')) {
+        this.showToast(e.message)
       }
       // document.querySelector(".box").innerHTML = `<h1>${e.message.toLowerCase()}</h1>`
     }
