@@ -34,7 +34,6 @@
     "firebase": "^9.6.11",
     "https-browserify": "^1.0.0",
     "moralis": "^1.5.11",
-    "ngx-pull-to-refresh": "^13.0.0",
     "os-browserify": "^0.3.0",
     "process": "^0.11.10",
     "rxjs": "~6.6.0",

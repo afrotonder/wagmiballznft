@@ -85,6 +85,7 @@
             {{connectButtonLabel}}
           </ion-button>
         <ion-button
+        shape="round" fill="outline" style="font-size: 11px; color: black"
           *ngIf="!minting&&connected"
           class="btn"
           (click)="switchToMint()"
@@ -129,14 +130,14 @@
 
 
 
-    <button
+    <ion-button
+    shape="round" fill="outline" style="font-size: 11px; color: black;margin: 10px"
       *ngIf="userTokenMintCount>0"
       (click)="beginMint()"
-      style="margin: 10px"
       id="mint"
     >
       Mint {{userTokenMintCount}} Tokens
-    </button>
+    </ion-button>
   </div>
 
   <!-- <div>
