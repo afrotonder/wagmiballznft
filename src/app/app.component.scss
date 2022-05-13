@@ -3,13 +3,10 @@ ion-toolbar {
   background-color: transparent;
 
 }
-* {
-  color: white;
-}
+
 ion-content {
-  color: white;
   --background: none !important;
-  background-color: black;
+  background-color: white;
   // background: linear-gradient(180deg, #696969, #e3e3e3, #696969);
   // background-size: 600% 600%;
 
@@ -22,12 +19,12 @@ ion-content {
     // background-size: 400% 400%;
 
     // .css-selector {
-      // background: linear-gradient(180deg, #f0f0f0, #949494);
-      // background-size: 600% 600%;
+      background: linear-gradient(180deg, #f0f0f0, #949494);
+      background-size: 600% 600%;
 
-      // -webkit-animation: AnimationName 30s ease infinite;
-      // -moz-animation: AnimationName 30s ease infinite;
-      // animation: AnimationName 30s ease infinite;
+      -webkit-animation: AnimationName 30s ease infinite;
+      -moz-animation: AnimationName 30s ease infinite;
+      animation: AnimationName 30s ease infinite;
   // }
 
 }

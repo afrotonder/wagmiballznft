@@ -48,30 +48,22 @@ export class HomePage {
     this.year = new Date().getFullYear().toString()
     this.menuItems = [
       {
-        name: 'Twitter', src: 'https://twitter.com/Alpha_Invaders',
-        icon: `../../assets/twitter-wt.png`,
+        name: 'Twitter', src: 'https://twitter.com/afrotonder',
+        icon: `../../assets/img/twitter-blk.png`,
         alt: `TwitterIcon`,
         title: 'Afrotonder@Twitter',
-        class: 'linkIcon'
-      },
-      {
-        name: 'OpenSea',
-        src: 'https://opensea.io/collection/genesis-insect-invaders',
-        icon: `../../assets/opensea-wt.png`,
-        alt: `OpenSeaIcon`,
-        title: 'Wagmiballz@OpenSea',
         class: 'linkIcon'
       },
       //  { name: 'Telegram', src: 'https://twitter.com/cyberjiba' },
       //  { name: 'Rarible', src: 'https://rarible.com/cyberjiba/items' },
       //  { name: 'Discord', src: 'https://discord.gg/' },
       {
-        name: 'AlphaInvaders',
-        src: 'https://alphainvaders.com/',
-        icon: `../../assets/alphy-wt.png`,
-        alt: `AlphyIcon`,
-        title: 'AlphaInvadersWebsite',
-        class: 'linkIconAlphy'
+        name: 'OpenSea',
+        src: 'https://opensea.io/collection/wagmiballz',
+        icon: `../../assets/img/opensea.png`,
+        alt: `OpenSeaIcon`,
+        title: 'Wagmiballz@OpenSea',
+        class: 'linkIcon'
       },
 
     ]
@@ -191,7 +183,7 @@ export class HomePage {
       this.connectButtonLabel = "Connect Wallet"
 
       // @ts-ignore
-      // document.getElementsByClassName('btn')[0].style.display = 'none'
+      document.getElementsByClassName('btn')[0].style.display = 'none'
       console.log('Err: ',e.message);
 
       if (e.message.includes('Provider not set or invalid')) {
