@@ -1,11 +1,14 @@
 <ion-content [fullscreen]="true">
-  <ion-refresher id="refresher" slot="fixed" (ionRefresh)="doRefresh($event)" style="background-color: black; display: none;">
+  <ion-refresher id="refresher" slot="fixed" (ionRefresh)="doRefresh($event)" style="background-color: white; display: none;">
     <ion-refresher-content pullingIcon="chevron-down-circle-outline" refreshingText="Refreshing..." >
     </ion-refresher-content>
   </ion-refresher>
 
   <ion-toolbar  class="navBar fillOutline">
     <ion-list style="justify-content: right;" class="navBar fillOutline" lines="none">
+      <ion-item class="socialBanner" lines="none">
+        <ion-icon class="contract" name="aperture-outline"></ion-icon>
+      </ion-item>
       <ion-item class="socialBanner" *ngFor="let item of menuItems" lines="none">
         <a
           class="socialAnchor"
@@ -13,15 +16,13 @@
           target="_blank"
           title="{{item.title}}"
         >
-          <img class="linkIcon" src="{{item.icon}}" alt="{{item.alt}}" />
+          <img class="{{item.class}}" src="{{item.icon}}" alt="{{item.alt}}" />
         </a>
       </ion-item>
-      <ion-item class="socialBanner" lines="none">
-        <ion-icon class="contract" name="aperture-outline"></ion-icon>
-      </ion-item>
+
     </ion-list>
     <!-- <ion-buttons slot="end">
-      <ion-button (click)="connectWallet()" shape="round" fill="outline" style="font-size: 11px; color: black;    margin-right: 20px; margin-top: 10px;">
+      <ion-button (click)="connectWallet()" shape="round" fill="outline" style="font-size: 11px; color: white;    margin-right: 20px; margin-top: 10px;">
         {{connectButtonLabel}}
       </ion-button>
     </ion-buttons> -->
@@ -30,28 +31,26 @@
 
   <div class="fillOutline" lines="none">
     <!-- Paddlez NFT -->
-    <img class="sugar" src="../../assets/icon/p1.gif" alt="" />
 
     <article style="margin: auto 10px auto 10px;">
       <img class="banner" src="../../assets/banner.png" alt="" />
     </article>
 
-    <img class="sugar" src="../../assets/icon/p2.gif" alt="" />
 
   </div>
 
   <div class="wagmiItem" lines="none">
     <!-- <div> -->
     <img
-      style="width: 300px; height: 300px; margin: auto"
+      style="margin: auto"
       class="promoGif"
-      src="../assets/WAGMIBALLZ_PROMO.gif"
+      src="../../assets/alphainvaders.gif"
       alt=""
     />
 
     <!-- </div> -->
 
-    <section class="infoSection">
+    <!-- <section class="infoSection">
       <p style="text-align: justify; line-height: 22px">
         WAGMIBALLZ NFT is a collection of 919 programatically generated gifs
         using GIMP, python, & Noelle Leigh's Animated Pixel Gradient generator.
@@ -63,42 +62,53 @@
         <li>Allow List Token for next Afrotonder collection</li>
         <li>CC0 art free for you to use</li>
       </ul>
-    </section>
+    </section> -->
   </div>
 
   <div class="box">
-    <div style="display: flex; justify-content: space-evenly; flex-direction: column;">
-      <section style="width: 100%; margin: 0 auto 20px auto">
-        <div style="text-align: right">
-          <section style="display: flex; justify-content: center">
-            <p>Price:</p>
-            <!-- <p style="width: 100px">{{eth}} ETH</p> -->
-            <p style="width: 100px">0 ETH</p>
 
-          </section>
-          <section *ngIf="connected" style="display: flex; justify-content: center">
-            <p>Mint Limit:</p>
-            <p style="width: 25px">{{limit}}</p>
-          </section>
-        </div>
-          <ion-button (click)="connectWallet()" *ngIf="!connected" shape="round" fill="outline" style="font-size: 11px; color: black;    margin-right: 20px; margin-top: 10px;">
-            {{connectButtonLabel}}
+
+    <div style="display: flex; justify-content: center; flex-direction: column;">
+
+      <div style="display: flex; justify-content: center;">
+        <img style="width: 66px !important; height: 60px;" src="../../assets/insect.gif" alt="AlphaInvadersBanner">
+
+        <section style=" margin: 0 30px 20px 30px; flex-direction: column;">
+          <div style="text-align: right">
+            <section style="display: flex; justify-content: center">
+              <p>Price:</p>
+              <!-- <p style="width: 100px">{{eth}} ETH</p> -->
+              <p style="width: 140px">0.02 ETH</p>
+
+            </section>
+            <section *ngIf="connected" style="display: flex; justify-content: center">
+              <p>Mint Limit:</p>
+              <p style="width: 25px">{{limit}}</p>
+            </section>
+          </div>
+            <ion-button (click)="connectWallet()" *ngIf="!connected" shape="round" fill="outline" style="font-size: 11px; color: white; border-radius: 20px; border: 2px solid white;  margin-right: 20px; margin-top: 10px;">
+              {{connectButtonLabel}}
+            </ion-button>
+          <ion-button
+          shape="round" fill="outline" style="font-size: 11px; color: white; border-radius: 20px; border: 2px solid white; "
+            *ngIf="!minting&&connected"
+            class="btn"
+            (click)="switchToMint()"
+          >
+            Mint
           </ion-button>
-        <ion-button
-        shape="round" fill="outline" style="font-size: 11px; color: black"
-          *ngIf="!minting&&connected"
-          class="btn"
-          (click)="switchToMint()"
-        >
-          Mint
-        </ion-button>
-        <!-- <a class='btn' href="mint.html#address={{address}}&key={{key}}">
-            <button class="startMint">
-              Mint
-            </button>
+          <!-- <a class='btn' href="mint.html#address={{address}}&key={{key}}">
+              <button class="startMint">
+                Mint
+              </button>
 
-    </a> -->
-      </section>
+      </a> -->
+        </section>
+
+        <img style="width: 66px !important; height: 60px; " src="../../assets/insect.gif" alt="AlphaInvadersBanner">
+      </div>
+
+
       <ion-item lines="none" class="minter clearBG" style="width: 50%;margin: auto;" *ngIf="minting">
         <!-- <div > -->
         <!-- <select id="count" [(ngModel)]="userTokenMintCount">
@@ -131,7 +141,7 @@
 
 
     <ion-button
-    shape="round" fill="outline" style="font-size: 11px; color: black;margin: 10px"
+    shape="round" fill="outline" style="font-size: 11px; color: white;margin: 10px; border-radius: 20px; border: 2px solid white; "
       *ngIf="userTokenMintCount>0"
       (click)="beginMint()"
       id="mint"
@@ -190,6 +200,6 @@
   <div id="footer"
   class="ion-no-border"
 >
-  Afrotonder ⚡ {{year}}
+  AplhaInvaders 👾 {{year}}
 </div>
 </ion-footer>
