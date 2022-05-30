@@ -3,6 +3,16 @@
 
 /** Ionic CSS Variables **/
 :root {
+
+  ion-button {
+    --border-color: black !important;
+    color: black !important;
+  }
+
+  ion-footer {
+    color: black;
+  }
+
   /** primary **/
   --ion-color-primary: #000000;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -83,6 +93,14 @@
    */
 
   body {
+    ion-button {
+      --border-color: black !important;
+      color: black;
+    }
+
+    ion-footer {
+      color: black;
+    }
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
@@ -153,10 +171,20 @@
    */
 
   .ios body {
+
+    ion-button {
+      --border-color: black !important;
+      color: black;
+    }
+
+    ion-footer {
+      color: black;
+    }
+
     --ion-background-color: #000000;
     --ion-background-color-rgb: 0,0,0;
 
-    --ion-text-color: #ffffff;
+    --ion-text-color: #000000;
     --ion-text-color-rgb: 255,255,255;
 
     --ion-color-step-50: #0d0d0d;
@@ -197,10 +225,20 @@
    */
 
   .md body {
+
+      ion-button {
+        --border-color: black !important;
+      color: black;
+    }
+
+    ion-footer {
+      color: black;
+    }
+
     --ion-background-color: #121212;
     --ion-background-color-rgb: 18,18,18;
 
-    --ion-text-color: #ffffff;
+    --ion-text-color: #000000;
     --ion-text-color-rgb: 255,255,255;
 
     --ion-border-color: #222222;
