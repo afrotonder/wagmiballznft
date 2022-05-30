@@ -32,6 +32,15 @@
 
 }
 
+app-home {
+  --background: none !important;
+  background-color: white;
+  background: linear-gradient(180deg, #f0f0f0, #949494);
+  background-size: 600% 600%;
+  animation: AnimationName 30s ease infinite;
+}
+
+
 :root {
 
   --ion-default-font: 'PressStart2P-Regular' !important;
