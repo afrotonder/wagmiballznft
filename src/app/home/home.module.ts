@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 
+import { PolygonMintComponent } from '../components/polygon-mint/polygon-mint.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { HomePageRoutingModule } from './home-routing.module';
     HomePageRoutingModule,
 
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, PolygonMintComponent]
 })
 export class HomePageModule {}

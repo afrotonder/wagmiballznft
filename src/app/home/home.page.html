@@ -1,12 +1,28 @@
 <ion-content [fullscreen]="true">
-  <ion-refresher id="refresher" slot="fixed" (ionRefresh)="doRefresh($event)" style="background-color: black; display: none;">
-    <ion-refresher-content pullingIcon="chevron-down-circle-outline" refreshingText="Refreshing..." >
+  <ion-refresher
+    id="refresher"
+    slot="fixed"
+    (ionRefresh)="doRefresh($event)"
+    style="background-color: black; display: none"
+  >
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      refreshingText="Refreshing..."
+    >
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-toolbar  class="navBar fillOutline">
-    <ion-list style="justify-content: right;" class="navBar fillOutline" lines="none">
-      <ion-item class="socialBanner" *ngFor="let item of menuItems" lines="none">
+  <ion-toolbar class="navBar fillOutline">
+    <ion-list
+      style="justify-content: right"
+      class="navBar fillOutline"
+      lines="none"
+    >
+      <ion-item
+        class="socialBanner"
+        *ngFor="let item of menuItems"
+        lines="none"
+      >
         <a
           class="socialAnchor"
           href="{{item.src}}"
@@ -16,28 +32,18 @@
           <img class="linkIcon" src="{{item.icon}}" alt="{{item.alt}}" />
         </a>
       </ion-item>
-      <ion-item class="socialBanner" lines="none">
-        <ion-icon class="contract" name="aperture-outline"></ion-icon>
-      </ion-item>
     </ion-list>
-    <!-- <ion-buttons slot="end">
-      <ion-button (click)="connectWallet()" shape="round" fill="outline" style="font-size: 11px; color: black;    margin-right: 20px; margin-top: 10px;">
-        {{connectButtonLabel}}
-      </ion-button>
-    </ion-buttons> -->
   </ion-toolbar>
-
 
   <div class="fillOutline" lines="none">
     <!-- Paddlez NFT -->
     <img class="sugar" src="../../assets/icon/p1.gif" alt="" />
 
-    <article style="margin: auto 10px auto 10px;">
+    <article style="margin: auto 10px auto 10px">
       <img class="banner" src="../../assets/banner.png" alt="" />
     </article>
 
     <img class="sugar" src="../../assets/icon/p2.gif" alt="" />
-
   </div>
 
   <div class="wagmiItem" lines="none">
@@ -53,10 +59,13 @@
 
     <section class="infoSection">
       <p style="text-align: justify; line-height: 22px">
-        WAGMIBALLZ NFT is a collection of 919 programatically generated gifs
+        WAGMIBALLZ NFT is a collection of 919 programmatically generated gifs
         using GIMP, python, & Noelle Leigh's Animated Pixel Gradient generator.
       </p>
-
+      <p style="text-align: justify; line-height: 22px">
+        The original 137 were hand crafted & created in the polygon blockchain. After getting lazy, the process
+        was automated and the result was the 782 WAGMIBALLZ that we're minted into the ETH blockchain.
+      </p>
       <p style="text-align: left">Utilities</p>
       <ul style="text-align: left; font-size: 10px">
         <li>Sprite for Paddlez Web3 Game</li>
@@ -67,49 +76,96 @@
   </div>
 
   <div class="box">
-    <div style="display: flex; justify-content: space-evenly; flex-direction: column;">
+    <div
+      style="
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+      "
+    >
       <section style="width: 100%; margin: 0 auto 20px auto">
-        <div style="text-align: right">
+        <div>
           <section style="display: flex; justify-content: center">
-            <p>Price:</p>
+            <p>ETH Mint Price:</p>
             <!-- <p style="width: 100px">{{eth}} ETH</p> -->
-            <p style="width: 100px">0 ETH</p>
-
+            <p style="margin-left: 5px">0 ETH</p>
           </section>
-          <section *ngIf="connected" style="display: flex; justify-content: center">
+          <section style="display: flex; justify-content: center">
+            <p>Poly Mint Price:</p>
+            <!-- <p style="width: 100px">{{eth}} ETH</p> -->
+            <p style="margin-left: 5px">7 MATIC</p>
+          </section>
+          <section
+            *ngIf="connected"
+            style="display: flex; justify-content: center"
+          >
             <p>Mint Limit:</p>
-            <p style="margin-left: 10px;">{{limit}}</p>
+            <p style="margin-left: 10px">{{limit}}</p>
           </section>
         </div>
-          <ion-button (click)="connectWallet()" *ngIf="!connected" shape="round" fill="outline" style="font-size: 11px; color: black;    margin-right: 20px; margin-top: 10px;">
-            {{connectButtonLabel}}
+
+        <div style="display: flex; justify-content: center; flex-direction: column;">
+          <ion-button
+          (click)="selectMintNetwork('eth')"
+          *ngIf="!connected&&!ethMint&&!polyMint"
+          shape="round"
+          fill="outline"
+          class="mintEth"
+        >
+        Mint Eth Collection
           </ion-button>
+
+          <ion-button
+          (click)="selectMintNetwork('poly')"
+          *ngIf="!connected&&!ethMint&&!polyMint"
+          shape="round"
+          fill="outline"
+          class="mintPolygon"
+        >
+          Mint Polygon Collection
+          </ion-button>
+        </div>
+        <!-- connect to thirdweb mint -->
         <ion-button
-        shape="round" fill="outline" style="font-size: 11px; color: black"
+        (click)="openThirdWebModal()"
+        *ngIf="!connected&&polyMint"
+        shape="round"
+        fill="outline"
+        style="font-size: 11px; color: black; margin-top: 10px"
+      >
+        Connect Wallet to Polygon
+      </ion-button>
+        <!-- connect to metamask for ETH mint -->
+        <ion-button
+          (click)="connectWallet()"
+          *ngIf="!connected&&ethMint"
+          shape="round"
+          fill="outline"
+          style="font-size: 11px; color: black; margin-top: 10px"
+        >
+          {{connectButtonLabel}}
+        </ion-button>
+        <!-- init ETH mint  -->
+        <ion-button
+          shape="round"
+          fill="outline"
+          style="font-size: 11px; color: black"
           *ngIf="!minting&&connected"
           class="btn"
           (click)="switchToMint()"
         >
           Mint
         </ion-button>
-        <!-- <a class='btn' href="mint.html#address={{address}}&key={{key}}">
-            <button class="startMint">
-              Mint
-            </button>
-
-    </a> -->
       </section>
-      <ion-item lines="none" class="minter clearBG" style="width: 50%;margin: auto;" *ngIf="minting">
-        <!-- <div > -->
-        <!-- <select id="count" [(ngModel)]="userTokenMintCount">
-            <option value="" selected disabled hidden>Select mint count</option>
-            <option *ngFor="let count of mintingItems" value="{{count}}">
-              {{count}}
-            </option>
-          </select> -->
-
+      <!-- ETH mint selection -->
+      <ion-item
+        lines="none"
+        class="minter clearBG"
+        style="width: 50%; margin: auto"
+        *ngIf="minting"
+      >
         <ion-select
-        class="clearBG"
+          class="clearBG"
           id="count"
           [(ngModel)]="userTokenMintCount"
           submitText="Select"
@@ -119,19 +175,20 @@
           <ion-select-option value="" selected disabled hidden
             >Mint count</ion-select-option
           >
-          <ion-select-option *ngFor="let count of mintingItems" value="{{count}}">
+          <ion-select-option
+            *ngFor="let count of mintingItems"
+            value="{{count}}"
+          >
             {{count}}
           </ion-select-option>
         </ion-select>
-
-        <!-- </div> -->
       </ion-item>
     </div>
 
-
-
     <ion-button
-    shape="round" fill="outline" style="font-size: 11px; color: black;margin: 10px"
+      shape="round"
+      fill="outline"
+      style="font-size: 11px; color: black; margin: 10px"
       *ngIf="userTokenMintCount>0"
       (click)="beginMint()"
       id="mint"
@@ -150,7 +207,22 @@
     ></iframe>
   </div> -->
 
-  <ion-item class="console" *ngIf="tokens.length>1">
+  <div *ngIf="tokens.length>1">
+    <p style="margin:auto; width: 60%;">
+     Ready to play Paddlez with your freshly minted NFTs?
+    </p>
+
+    <ion-button shape="round"
+    fill="outline"
+     target="_blank"
+     class="playPaddlez" href="https://paddlez-1b260.web.app/">
+      Play Paddlez
+    </ion-button>
+
+  </div>
+  <ion-item class="clearBG" style="--background: none; background-color: transparent;" class="console" *ngIf="tokens.length>1">
+
+
     <table class="table">
       <tr>
         <th><img src="../../assets/opensea.png" /></th>
@@ -183,13 +255,7 @@
     <iframe scrolling="no" style="width:100%; height:185px; margin-bottom: 25px;" src="../../assets/index.html" frameborder="0"></iframe>
 
   </div> -->
-
-
 </ion-content>
 <ion-footer class="ion-no-border">
-  <div id="footer"
-  class="ion-no-border"
->
-  Afrotonder ⚡ {{year}}
-</div>
+  <div id="footer" class="ion-no-border">Afrotonder ⚡ {{year}}</div>
 </ion-footer>

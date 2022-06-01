@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import Web3 from 'web3';
 import Moralis from "moralis/dist/moralis.min.js";
 import { firebaseConfig } from "../../../environment.prod";
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 // import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 // import ethers from 'ethers';
+// import { ModalController, ActionSheetController } from '@ionic/angular';
 
 import { Web3Service } from '../web3.service';
+import { PolygonMintComponent } from '../components/polygon-mint/polygon-mint.component';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -28,6 +30,9 @@ export class HomePage {
   items: {};
   image: string;
   title: string;
+  polyMint: boolean;
+  openedModal: boolean;
+  ethMint: boolean;
   mintingItems: Array<any>;
   direction: string[] | undefined;
   minting: Boolean;
@@ -35,6 +40,7 @@ export class HomePage {
   connected: boolean;
   constructor(private web3: Web3Service,
     private toastCtrl: ToastController,
+    public modalCtrl: ModalController,
 
   ) {
 
@@ -44,6 +50,9 @@ export class HomePage {
     this.showSpinner = true;
     this.userTokenMintCount = 0
     this.connectButtonLabel = "Connect Wallet"
+    this.ethMint = false
+    this.polyMint = false
+    this.openedModal = false
 
     this.year = new Date().getFullYear().toString()
     this.menuItems = [
@@ -63,6 +72,15 @@ export class HomePage {
         icon: `../../assets/img/opensea.png`,
         alt: `OpenSeaIcon`,
         title: 'Wagmiballz@OpenSea',
+        class: 'linkIcon'
+      },
+
+      {
+        name: 'VerifiedContract',
+        src: 'https://etherscan.io/address/0x7b44e6E560d5B329A23700BE21a487249758Bb80',
+        icon: `../../assets/contract.png`,
+        alt: `ContractIcon`,
+        title: 'Contract@Etherscan',
         class: 'linkIcon'
       },
 
@@ -97,6 +115,16 @@ export class HomePage {
 
     event.target.complete()
 
+  }
+
+  selectMintNetwork(network) {
+    console.log(network);
+
+    if (network === 'eth') {
+      this.ethMint = true
+    } else {
+      this.polyMint = true
+    }
   }
 
   async testMoralis() {
@@ -140,8 +168,6 @@ export class HomePage {
       })
       const providers = await window.ethereum.send('eth_requestAccounts');
 
-      console.log(providers);
-
       await f0.init({
         web3: web3,
         contract: config.contract,
@@ -183,9 +209,14 @@ export class HomePage {
       // @ts-ignore
       // document.getElementsByClassName('btn')[0].style.display = 'none'
       console.log('Err: ', e.message);
-
+      if (e.message === "Cannot read properties of undefined (reading 'eth')") {
+        this.showToast('Minting not open yet. 👀')
+      }
       if (e.message.includes('Provider not set or invalid')) {
         this.showToast('Please log into your wallet. 🦊')
+      }
+      if (e.message.includes('Please sign into main network')) {
+        this.showToast('Please switch to the ETH network. 📡')
       }
       if (e.message.includes('Please sign into')) {
         // this.showToast('Please sign into MetaMask in the Eth network and/or use a browser without Coinbase Wallet Extension installed. ')
@@ -203,13 +234,11 @@ export class HomePage {
 
       return undefined;
     }
-    console.log('estamos ganando???', window.ethereum.providers);
+
     let tempProviders = window.ethereum.providers
     let t = []
     tempProviders.forEach(element => {
-      console.log(element);
-      console.log('brave ', element.isBraveWallet);
-      console.log('coinbase ', element.isCoinbaseWallet);
+
       // if (element.isCoinbaseWallet) {
       //   window.ethereum.providers.splice(window.ethereum.providers[window.ethereum.providers.indexOf(element)], 1)
       // }
@@ -222,16 +251,16 @@ export class HomePage {
         t.push(element)
       }
     });
-    console.log('pushing t ', t);
-    console.log('STRIPPED THE SHIT ', window.ethereum.providers);
+
     let provider;
+
     switch (providerName) {
       case 'CoinBase':
         provider = t.find(({ isCoinbaseWallet }) => isCoinbaseWallet);
         break;
       case 'MetaMask':
         provider = t.find(({ isMetaMask }) => isMetaMask);
-        console.log('mera pape pa w ceas');
+
         this.runWeb3F0(provider)
         break;
     }
@@ -355,8 +384,6 @@ export class HomePage {
 
     try {
 
-      console.log(this.userTokenMintCount);
-
       let count = this.userTokenMintCount // parseInt(document.querySelector("#count")[0].value)
 
       if (count === 0) {
@@ -385,6 +412,32 @@ export class HomePage {
 
 
   }
+
+  async openThirdWebModal() {
+
+    if (!this.openedModal) {
+
+      const modal = await this.modalCtrl.create({
+        component: PolygonMintComponent,
+        cssClass: 'customModal',
+        backdropDismiss: true,
+        swipeToClose: true
+      });
+      this.openedModal = true
+
+      modal.onDidDismiss().then((data) => {
+        this.openedModal = false
+      });
+      await modal.present();
+    }
+
+
+
+
+
+
+  }
+
   async showToast(message) {
     const toast = await this.toastCtrl.create({
       message,
