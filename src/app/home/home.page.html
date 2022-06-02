@@ -14,7 +14,6 @@
 
   <ion-toolbar class="navBar fillOutline">
     <ion-list
-      style="justify-content: right"
       class="navBar fillOutline"
       lines="none"
     >
@@ -49,7 +48,6 @@
   <div class="wagmiItem" lines="none">
     <!-- <div> -->
     <img
-      style="width: 300px; height: 300px; margin: auto"
       class="promoGif"
       src="../assets/WAGMIBALLZ_PROMO.gif"
       alt=""
@@ -60,7 +58,7 @@
     <section class="infoSection">
       <p style="text-align: justify; line-height: 22px">
         WAGMIBALLZ NFT is a collection of 919 programmatically generated gifs
-        using GIMP, python, & Noelle Leigh's Animated Pixel Gradient generator.
+        using GIMP, python, & Noelle Leigh's <a href="https://animated-pixel-gradients.glitch.me/">Animated Pixel Gradient generator.</a>
       </p>
       <p style="text-align: justify; line-height: 22px">
         The original 137 were hand crafted & created in the polygon blockchain. After getting lazy, the process
@@ -83,17 +81,17 @@
         flex-direction: column;
       "
     >
-      <section style="width: 100%; margin: 0 auto 20px auto">
+      <section style="width: 100%; margin: 0 auto 0 auto">
         <div>
           <section style="display: flex; justify-content: center">
-            <p>ETH Mint Price:</p>
+            <p class="collectionInfo">ETH Mint Price:</p>
             <!-- <p style="width: 100px">{{eth}} ETH</p> -->
-            <p style="margin-left: 5px">0 ETH</p>
+            <p class="collectionInfo" style="margin-left: 5px">0 ETH</p>
           </section>
           <section style="display: flex; justify-content: center">
-            <p>Poly Mint Price:</p>
+            <p class="collectionInfo">Poly Mint Price:</p>
             <!-- <p style="width: 100px">{{eth}} ETH</p> -->
-            <p style="margin-left: 5px">7 MATIC</p>
+            <p class="collectionInfo" style="margin-left: 5px">7 MATIC</p>
           </section>
           <section
             *ngIf="connected"
@@ -101,6 +99,13 @@
           >
             <p>Mint Limit:</p>
             <p style="margin-left: 10px">{{limit}}</p>
+          </section>
+
+          <section *ngIf="minting" style="display: flex; justify-content: center">
+            <p>Supply:</p>
+
+            <p style="width: 100px">{{currentSupply}}</p>
+
           </section>
         </div>
 
@@ -171,6 +176,7 @@
           submitText="Select"
           cancelText="Cancel"
           placeholder="Select Amount"
+          (ionChange)="selectSupply()"
         >
           <ion-select-option value="" selected disabled hidden
             >Mint count</ion-select-option
@@ -255,7 +261,10 @@
     <iframe scrolling="no" style="width:100%; height:185px; margin-bottom: 25px;" src="../../assets/index.html" frameborder="0"></iframe>
 
   </div> -->
+  <div class="mobileFooter">
+    <div class="footer">Afrotonder ⚡ {{year}}</div>
+  </div>
 </ion-content>
-<ion-footer class="ion-no-border">
-  <div id="footer" class="ion-no-border">Afrotonder ⚡ {{year}}</div>
+<ion-footer class="mainFooter ion-no-border">
+  <div class="footer">Afrotonder ⚡ {{year}}</div>
 </ion-footer>

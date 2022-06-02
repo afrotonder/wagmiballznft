@@ -38,11 +38,14 @@ export class HomePage {
   minting: Boolean;
   connectButtonLabel: string;
   connected: boolean;
+  currentSupply: string;
   constructor(private web3: Web3Service,
     private toastCtrl: ToastController,
     public modalCtrl: ModalController,
 
   ) {
+
+    this.currentSupply = "-"
 
     this.connected = false;
     this.tokens = []
@@ -83,6 +86,14 @@ export class HomePage {
         title: 'Contract@Etherscan',
         class: 'linkIcon'
       },
+      {
+        name: 'Paddlez',
+        src: 'https://paddlez-1b260.web.app/',
+        icon: `../../assets/paddlez.png`,
+        alt: `PaddlezIcon`,
+        title: 'PaddlezOfficial',
+        class: 'linkIcon'
+      },
 
     ]
 
@@ -118,7 +129,6 @@ export class HomePage {
   }
 
   selectMintNetwork(network) {
-    console.log(network);
 
     if (network === 'eth') {
       this.ethMint = true
@@ -284,8 +294,6 @@ export class HomePage {
     })
     // const providers = await window.ethereum.send('eth_requestAccounts');
 
-    // console.log('providers ', providers);
-
     await f0.init({
       web3: web3,
       contract: config.contract,
@@ -328,6 +336,13 @@ export class HomePage {
   async switchToMint() {
     this.minting = true
 
+
+    const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+
+    await timer(500);
+
+
+    document.getElementById('count').scrollIntoView({ behavior: "smooth" });
     // const { key, address } = f0.parseURL(location.href)
     // const template = Handlebars.compile(document.querySelector("#template").innerHTML);
     // const mintTemplate = Handlebars.compile(document.querySelector("#mint-template").innerHTML);
@@ -348,6 +363,8 @@ export class HomePage {
       const symbol = await this.f0.symbol()
       const nextId = await this.f0.nextId()
       const config = await this.f0.config()
+
+
       let mintingItems = []
       for (let i = 1; i <= invite.condition.converted.limit; i++) {
         mintingItems.push(i)
@@ -372,6 +389,8 @@ export class HomePage {
 
       let key = this.key
 
+      this.currentSupply = (current-1).toString() + '/' + supply.toString()
+
       //
     } catch (e) {
       console.log('ERR, NOT INVITED TO MINT ', e);
@@ -389,6 +408,8 @@ export class HomePage {
       if (count === 0) {
         alert("Please enter a number greater than 0")
       } else {
+        this.showToast('Your transaction is now processing! 🦊 ')
+
         let tokens = await this.f0.mint(this.key, count)
 
         let tempTokens = tokens.map((token) => {
@@ -401,6 +422,9 @@ export class HomePage {
 
         this.tokens = tempTokens
 
+        this.showToast('Your transaction was successful! 🎉')
+
+
       }
     } catch (error) {
       console.log(error.message);
@@ -410,6 +434,19 @@ export class HomePage {
       }
     }
 
+
+  }
+
+  async selectSupply() {
+
+    const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+
+    await timer(500);
+
+
+    document.getElementById('mint').scrollIntoView({ behavior: "smooth" });
+
+    // document.getElementById('footer').scrollIntoView({ behavior: "smooth" });
 
   }
 

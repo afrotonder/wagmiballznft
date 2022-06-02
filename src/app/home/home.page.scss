@@ -1,6 +1,10 @@
 @use "../app.component.scss";
 @use "../../assets/style.css";
 
+.collectionInfo {
+  font-size: 14px;
+}
+
 .mintPolygon {
   font-size: 11px;
   color: black;
@@ -138,13 +142,29 @@
   display: none;
 }
 
-#footer {
-  position: absolute;
-  text-align: right;
-  bottom: 0;
-  width: 99%;
-  font-size: 10px;
+
+
+.mainFooter  {
+  display: flex;
+  .footer {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 99%;
+    font-size: 10px;
+  }
 }
+
+.mobileFooter {
+  display: none;
+}
+
+.promoGif{
+  width: 300px; height: 300px; margin: auto;
+
+}
+
+
 
 @media only screen and (min-width: 1300px) {
   .wagmiItem {
@@ -153,14 +173,34 @@
 }
 
 @media only screen and (max-width: 700px) {
-  #footer {
-    position: inherit;
-    display: none;
-    text-align: right;
-    bottom: 0;
-    width: 100%;
-    font-size: 10px;
+
+  .promoGif{
+
+    width: 250px;
+    height: 250px;
+    margin: 0px auto 30px auto;
   }
+
+  .mobileFooter {
+    display: flex;
+    margin: 30px auto 15px auto;
+  }
+
+  .mainFooter  {
+    display: none;
+
+    .footer {
+      position: inherit;
+      // display: none;
+      text-align: center;
+      bottom: 0;
+      width: 100%;
+      font-size: 10px;
+    }
+
+  }
+
+
 
   #refresher {
     visibility: visible;
@@ -184,9 +224,25 @@
   }
 }
 
-@media only screen and (max-height: 500px) {
-  #footer {
-    // position: inherit;
+@media only screen and (max-height: 800px) {
+  // .footer {
+  //   // position: inherit;
+  //   // display: none;
+  // }
+
+  .mobileFooter {
+    display: flex;
+    margin: 30px auto 15px auto;
+    .footer {
+      position: inherit;
+      text-align: center;
+      bottom: 0;
+      width: 99%;
+      font-size: 10px;
+    }
+  }
+
+  .mainFooter  {
     display: none;
   }
 }
