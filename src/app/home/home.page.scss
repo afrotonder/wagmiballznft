@@ -19,6 +19,8 @@
   margin: auto;
   display: flex;
   width: 210px;
+  background: linear-gradient(180deg, #696969, #e3e3e3, #696969);
+  border-radius: 50px;
 }
 
 .mintEth {
@@ -148,7 +150,7 @@
   display: flex;
   .footer {
     position: absolute;
-    text-align: center;
+    text-align: right;
     bottom: 0;
     width: 99%;
     font-size: 10px;
@@ -192,7 +194,7 @@
     .footer {
       position: inherit;
       // display: none;
-      text-align: center;
+      text-align: right;
       bottom: 0;
       width: 100%;
       font-size: 10px;
@@ -224,7 +226,7 @@
   }
 }
 
-@media only screen and (max-height: 800px) {
+@media only screen and (max-height: 850px) {
   // .footer {
   //   // position: inherit;
   //   // display: none;
@@ -235,7 +237,7 @@
     margin: 30px auto 15px auto;
     .footer {
       position: inherit;
-      text-align: center;
+      text-align: right;
       bottom: 0;
       width: 99%;
       font-size: 10px;

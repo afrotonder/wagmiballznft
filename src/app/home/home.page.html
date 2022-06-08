@@ -195,12 +195,29 @@
       shape="round"
       fill="outline"
       style="font-size: 11px; color: black; margin: 10px"
-      *ngIf="userTokenMintCount>0"
+      *ngIf="userTokenMintCount>0&&notMinting"
       (click)="beginMint()"
       id="mint"
     >
       Mint {{userTokenMintCount}} Tokens
     </ion-button>
+
+    <ion-button
+    shape="round"
+    fill="outline"
+    style="
+      font-size: 11px;
+      color: white;
+      margin: 10px;
+      border-radius: 20px;
+      border: 2px solid white;
+    "
+    *ngIf="userTokenMintCount>0&&!notMinting"
+    disabled
+  >
+    Minting...
+  </ion-button>
+
   </div>
 
   <!-- <div>
@@ -213,8 +230,8 @@
     ></iframe>
   </div> -->
 
-  <div *ngIf="tokens.length>1">
-    <p style="margin:auto; width: 60%;">
+  <div style="margin-top: 20px;" *ngIf="tokens.length>1">
+    <p style="margin:0 auto 10px auto; width: 60%; text-align: center;">
      Ready to play Paddlez with your freshly minted NFTs?
     </p>
 
@@ -226,7 +243,7 @@
     </ion-button>
 
   </div>
-  <ion-item class="clearBG" style="--background: none; background-color: transparent;" class="console" *ngIf="tokens.length>1">
+  <ion-item id="doneMinting" class="clearBG" style="--background: none; background-color: transparent; margin-bottom: 20px;" class="console" *ngIf="tokens.length>=1">
 
 
     <table class="table">

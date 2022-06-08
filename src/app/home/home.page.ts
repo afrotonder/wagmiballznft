@@ -39,13 +39,16 @@ export class HomePage {
   connectButtonLabel: string;
   connected: boolean;
   currentSupply: string;
+  notMinting: boolean;
+
   constructor(private web3: Web3Service,
     private toastCtrl: ToastController,
     public modalCtrl: ModalController,
 
   ) {
 
-    this.currentSupply = "-"
+    this.currentSupply = "-/782"
+    this.notMinting = true
 
     this.connected = false;
     this.tokens = []
@@ -71,7 +74,7 @@ export class HomePage {
       //  { name: 'Discord', src: 'https://discord.gg/' },
       {
         name: 'OpenSea',
-        src: 'https://opensea.io/collection/wagmiballz',
+        src: 'https://opensea.io/collection/wagmiballz-nft',
         icon: `../../assets/img/opensea.png`,
         alt: `OpenSeaIcon`,
         title: 'Wagmiballz@OpenSea',
@@ -408,6 +411,9 @@ export class HomePage {
       if (count === 0) {
         alert("Please enter a number greater than 0")
       } else {
+
+        this.notMinting = false
+
         this.showToast('Your transaction is now processing! 🦊 ')
 
         let tokens = await this.f0.mint(this.key, count)
@@ -424,9 +430,20 @@ export class HomePage {
 
         this.showToast('Your transaction was successful! 🎉')
 
+        const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+
+        await timer(500);
+
+        document.getElementById('doneMinting').scrollIntoView({ behavior: "smooth" });
+
+        this.notMinting = true
+
 
       }
     } catch (error) {
+
+      this.notMinting = true
+
       console.log(error.message);
       if (error.message.includes('execution reverted: 10')) {
 
@@ -479,7 +496,7 @@ export class HomePage {
     const toast = await this.toastCtrl.create({
       message,
       position: 'bottom',
-      duration: 9000,
+      duration: 4000,
 
     });
     toast.present();
